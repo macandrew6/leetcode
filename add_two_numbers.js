@@ -24,7 +24,7 @@ let addTwoNumbers = (l1, l2) => {
     num2 += l2[i];
   }
   // console.log(num1);
-  console.log((parseInt(num1) + parseInt(num2)).toString().split(''));
+  return (parseInt(num1) + parseInt(num2)).toString().split('').map(Number);
 };
 
 console.log(addTwoNumbers([1, 2, 3], [3, 2, 1]));

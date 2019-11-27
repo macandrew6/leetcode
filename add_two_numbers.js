@@ -12,3 +12,19 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807. 
 */
+
+let addTwoNumbers = (l1, l2) => {
+  let num1 = '';
+  let num2 = '';
+  for (let i = l1.length - 1; i >= 0; i--) {
+    num1 += l1[i];
+  }
+
+  for (let i = l2.length - 1; i >= 0; i--) {
+    num2 += l2[i];
+  }
+  // console.log(num1);
+  console.log((parseInt(num1) + parseInt(num2)).toString().split(''));
+};
+
+console.log(addTwoNumbers([1, 2, 3], [3, 2, 1]));

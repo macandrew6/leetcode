@@ -12,6 +12,10 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807. 
 */
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
 
 let addTwoNumbers = (l1, l2) => {
   // init current node to dummy head of the returning list

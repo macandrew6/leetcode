@@ -33,22 +33,34 @@ let addTwoNumbers = (l1, l2) => {
   // list
   // return dummy head's next node
 
-  let dummyHead = new ListNode(0);
-  let curr = dummyHead;
-  let carry = 0;
-  let sum = 0;
-  while (l1 !== null || l2 !== null) {
-    sum = carry + (l1 ? l1.val : 0) + (l2 ? l2.val : 0);
-    carry = Math.floor(sum / 10);
-    curr.next = new ListNode(sum % 10);
-    curr = curr.next;
-    l1 = (l1 ? l1.next : l1);
-    l2 = (l2 ? l2.next : l2);
+  let carryOver = 0;
+  const rootNode = new ListNode(null);
+  let nodeIterator = rootNode;
+  let currentVal;
+
+  while (l1 || l2) {
+    if (l1 && l2) {
+      currentVal = l1.val + l2.val + carryOver;
+    } else if (l1) {
+      currentVal = l1.val + carryOver;
+    } else {
+      currentVal = l2.val + carryOver;
+    }
+
+    carryOver = Math.floor(currentVal / 10);
+
+    const newNode = new ListNode(currentVal % 10);
+    nodeIterator.next = newNode;
+    nodeIterator = nodeIterator.next;
+
+    if (l1) l1 = l1.next;
+    if (l2) l2 = l2.next;
   }
-  if (carry > 0) {
-    curr.next = new ListNode(carry);
-  }
-  return dummyHead.next;
+
+
+  if (carryOver) nodeIterator.next = new ListNode(1);
+
+  return rootNode.next;
 };
 
 console.log(addTwoNumbers([1, 2, 3], [3, 2, 1]));

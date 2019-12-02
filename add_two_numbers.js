@@ -12,12 +12,7 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807. 
 */
-function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
 
-let addTwoNumbers = (l1, l2) => {
   // init current node to dummy head of the returning list
   // init carry to 0
   // init p and q to head of l1 and l2 respectively.
@@ -32,21 +27,42 @@ let addTwoNumbers = (l1, l2) => {
   // check if carry = 1, if so append a new node with digit 1 to the returning 
   // list
   // return dummy head's next node
-  let node = null;
-  const carry = arguments[2];
-  if (l1 || l2) {
-    const val1 = l1 ? l1.val : 0;
-    const val2 = l2 ? l2.val : 0;
-    const next1 = l1 ? l1.next : null;
-    const next2 = l2 ? l2.next : null;
-    const val = carry ? val1 + val2 + 1 : val1 + val2;
-    node = new ListNode(val % 10);
-    node.next = addTwoNumbers(next1, next2, val >= 10);
-  } else if (carry) {
-    node = new ListNode(1);
-    node.next = null;
+
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+
+var addTwoNumbers = function (l1, l2) {
+  var List = new ListNode(0);
+  var head = List;
+  var sum = 0;
+  var carry = 0;
+
+  while (l1 !== null || l2 !== null || sum > 0) {
+
+    if (l1 !== null) {
+      sum = sum + l1.val;
+      l1 = l1.next;
+    }
+    if (l2 !== null) {
+      sum = sum + l2.val;
+      l2 = l2.next;
+    }
+    if (sum >= 10) {
+      carry = 1;
+      sum = sum - 10;
+    }
+
+    head.next = new ListNode(sum);
+    head = head.next;
+
+    sum = carry;
+    carry = 0;
+
   }
-  return node;
+
+  return List.next;
 };
 
 console.log(addTwoNumbers([1, 2, 3, 4], [3, 2, 1]));

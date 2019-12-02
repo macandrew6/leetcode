@@ -32,35 +32,21 @@ let addTwoNumbers = (l1, l2) => {
   // check if carry = 1, if so append a new node with digit 1 to the returning 
   // list
   // return dummy head's next node
-
-  let carryOver = 0;
-  const rootNode = new ListNode(null);
-  let nodeIterator = rootNode;
-  let currentVal;
-
-  while (l1 || l2) {
-    if (l1 && l2) {
-      currentVal = l1.val + l2.val + carryOver;
-    } else if (l1) {
-      currentVal = l1.val + carryOver;
-    } else {
-      currentVal = l2.val + carryOver;
-    }
-
-    carryOver = Math.floor(currentVal / 10);
-
-    const newNode = new ListNode(currentVal % 10);
-    nodeIterator.next = newNode;
-    nodeIterator = nodeIterator.next;
-
-    if (l1) l1 = l1.next;
-    if (l2) l2 = l2.next;
+  let node = null;
+  const carry = arguments[2];
+  if (l1 || l2) {
+    const val1 = l1 ? l1.val : 0;
+    const val2 = l2 ? l2.val : 0;
+    const next1 = l1 ? l1.next : null;
+    const next2 = l2 ? l2.next : null;
+    const val = carry ? val1 + val2 + 1 : val1 + val2;
+    node = new ListNode(val % 10);
+    node.next = addTwoNumbers(next1, next2, val >= 10);
+  } else if (carry) {
+    node = new ListNode(1);
+    node.next = null;
   }
-
-
-  if (carryOver) nodeIterator.next = new ListNode(1);
-
-  return rootNode.next;
+  return node;
 };
 
-console.log(addTwoNumbers([1, 2, 3], [3, 2, 1]));
+console.log(addTwoNumbers([1, 2, 3, 4], [3, 2, 1]));

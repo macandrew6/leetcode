@@ -34,11 +34,24 @@ function ListNode(val) {
 }
 
 var addTwoNumbers = function (l1, l2) {
+  // init current node to dummy head of the returning list
   var List = new ListNode(0);
   var head = List;
   var sum = 0;
+  // init carry to 0
   var carry = 0;
-
+  // init p and q to head of l1 and l2 respectively.
+  // loop through l1 and l2 until you reach both ends.
+    // set x to node p's value. if p has reached the end of l1 set to 0
+    // set y to node q's value. if q has reached the end of l2 set to 0
+    // set sum = x + y + carry.
+    // update carry = sum / 10
+    // create a new node with the digit value of (sum mod 10) and set it to 
+    // current nod's next, then advance current note to next
+    // advance both p and q
+  // check if carry = 1, if so append a new node with digit 1 to the returning 
+  // list
+  // return dummy head's next node
   while (l1 !== null || l2 !== null || sum > 0) {
 
     if (l1 !== null) {

@@ -31,6 +31,7 @@ function lengthOfLongestSubstring(str) {
     if (str[i] !== str[i - 1]) {
       let sub = str.slice(start, i + 1);
       subs[sub] = sub.length;
+      start = i - 1;
     } else {
       start = i;
     }
@@ -45,4 +46,4 @@ function lengthOfLongestSubstring(str) {
   return max;
 }
 
-console.log(lengthOfLongestSubstring('abcabcabc'));
+console.log(lengthOfLongestSubstring('hello'));

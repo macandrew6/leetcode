@@ -22,5 +22,6 @@ Explanation: The answer is "wke", with the length of 3.
 */
 
 function lengthOfLongestSubstring(str) {
-
+  let sub = '';
+  
 }

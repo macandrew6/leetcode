@@ -45,4 +45,4 @@ function lengthOfLongestSubstring(str) {
   return max;
 }
 
-console.log(lengthOfLongestSubstring('goodbye'));
+console.log(lengthOfLongestSubstring('abcabcabc'));

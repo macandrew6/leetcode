@@ -21,7 +21,10 @@ Explanation: The answer is "wke", with the length of 3.
              and not a substring.
 */
 
+// lengthOfLongestSubstring('hello')
 function lengthOfLongestSubstring(str) {
-  let sub = '';
+  // save substring sequences into a hash
+  // {'h': 1, 'he': 2, 'hel': 3, 'l': 1, 'le': 2}
+  let subs = {};
   
 }
